@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID信息 - 车管系统</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 设置整个页面高度占据视窗 */
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            width: 100%; /* 图片容器宽度占据整个视窗宽度 */
+            height: 100vh; /* 图片容器高度占据整个视窗高度 */
+            overflow: hidden; /* 溢出部分隐藏 */
+            position: relative; /* 相对定位，用于覆盖内容 */
+        }
+        img {
+            width: auto; /* 图片宽度自适应 */
+            height: 100%; /* 图片高度占据图片容器高度 */
+            object-fit: cover; /* 填充整个容器 */
+            object-position: left; /* 图片在容器中的水平位置，这里设置为左对齐 */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="image.png" alt="你的图片">
+    </div>
+</body>
+</html>
