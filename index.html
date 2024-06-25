@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -7,31 +6,70 @@
     <title>RFID信息 - 车管系统</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* 设置整个页面高度占据视窗 */
-            background-color: #f0f0f0;
+            margin: 0; /* 清除默认的 body 边距 */
+            font-family: Arial, sans-serif; /* 设置全局字体 */
+            background-color: #f8f8f8; /* 设置背景色为 #F8F8F8 */
         }
-        .image-container {
-            width: 100%; /* 图片容器宽度占据整个视窗宽度 */
-            height: 100vh; /* 图片容器高度占据整个视窗高度 */
-            overflow: hidden; /* 溢出部分隐藏 */
-            position: relative; /* 相对定位，用于覆盖内容 */
+        .contentBox {
+            width: 100vw; /* 宽度100%屏幕宽度 */
+            max-width: 100%; /* 最大宽度不超过屏幕宽度 */
+            height: 194px; /* 设置高度为 194px */
+            padding: 28px; /* 内边距 */
+            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
+            border: 0px solid #f8f8f8; /* 边框颜色和背景色一致 */
         }
-        img {
-            width: auto; /* 图片宽度自适应 */
-            height: 100%; /* 图片高度占据图片容器高度 */
-            object-fit: cover; /* 填充整个容器 */
-            object-position: left; /* 图片在容器中的水平位置，这里设置为左对齐 */
+        .card-box {
+            width: 100%; /* 宽度100% */
+            height: 159px; /* 高度 */
+            border: 0px solid #f8f8f8; /* 边框颜色和背景色一致 */
+            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
+        }
+        .card-line {
+            width: 100%; /* 宽度100% */
+            height: 46px; /* 高度 */
+            padding: 12px 0; /* 内边距 */
+            margin: 0; /* 外边距设置为0，使其紧贴内边框 */
+            border-bottom: 1px solid #ebedf0; /* 底部边框实线样式，颜色为 #EBEDF0 */
+            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
+            font-size: 14px; /* 设置字体大小，与 .label 和 .value 保持一致 */
+        }
+        .label, .value {
+            display: inline-block; /* 将 label 和 value 显示为行内块元素 */
+            vertical-align: middle; /* 垂直对齐方式 */
+            margin: 0; /* 清除默认的外边距 */
+            padding: 0; /* 清除默认的内边距 */
+            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
+            outline: none !important; /* 清除默认的轮廓 */
+            outline-color: initial !important;
+            outline-style: none !important;
+            outline-width: initial !important;
+        }
+        .label {
+            width: 86px; /* 宽度 */
+            color: #646566; /* 字体颜色 */
+        }
+        .value {
+            width: auto; /* 宽度自动调整 */
+            color: #000000; /* 字体颜色 */
         }
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <img src="image.png" alt="你的图片">
+    <div class="contentBox">
+        <div class="card-box">
+            <div class="card-line">
+                <div class="label">车牌号</div>
+                <div class="value">赣AR1H687</div>
+            </div>
+            <div class="card-line">
+                <div class="label">车主姓名</div>
+                <div class="value">张**</div>
+            </div>
+            <div class="card-line">
+                <div class="label">入网时间</div>
+                <div class="value">2023-11-02 12:17:03</div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
