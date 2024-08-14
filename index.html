@@ -4,56 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RFID信息 - 车管系统</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <style>
         body {
-            margin: 0; /* 清除默认的 body 边距 */
-            font-family: Arial, sans-serif; /* 设置全局字体 */
-            background-color: #f8f8f8; /* 设置背景色为 #F8F8F8 */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            position: relative;
+            overflow: hidden;
         }
         .contentBox {
-            width: 100vw; /* 宽度100%屏幕宽度 */
-            max-width: 100%; /* 最大宽度不超过屏幕宽度 */
-            height: 194px; /* 设置高度为 194px */
-            padding: 28px; /* 内边距 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
-            border: 0px solid #f8f8f8; /* 边框颜色和背景色一致 */
+            width: 100vw;
+            max-width: 100%;
+            height: 194px;
+            padding: 28px;
+            box-sizing: border-box;
+            border: 0px solid #f8f8f8;
+            position: relative;
+            z-index: 10;
         }
         .card-box {
-            width: 100%; /* 宽度100% */
-            height: 159px; /* 高度 */
-            border: 0px solid #f8f8f8; /* 边框颜色和背景色一致 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
+            width: 100%;
+            height: 159px;
+            border: 0px solid #f8f8f8;
+            box-sizing: border-box;
         }
         .card-line {
-            width: 100%; /* 宽度100% */
-            height: 46px; /* 高度 */
-            padding: 12px 0; /* 内边距 */
-            margin: 0; /* 外边距设置为0，使其紧贴内边框 */
-            border-bottom: 1px solid #ebedf0; /* 底部边框实线样式，颜色为 #EBEDF0 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
-            font-size: 14px; /* 设置字体大小，与 .label 和 .value 保持一致 */
+            width: 100%;
+            height: 46px;
+            padding: 12px 0;
+            margin: 0;
+            border-bottom: 1px solid #ebedf0;
+            box-sizing: border-box;
+            font-size: 14px;
         }
         .label, .value {
-            display: inline-block; /* 将 label 和 value 显示为行内块元素 */
-            vertical-align: middle; /* 垂直对齐方式 */
-            margin: 0; /* 清除默认的外边距 */
-            padding: 0; /* 清除默认的内边距 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
-            outline: none !important; /* 清除默认的轮廓 */
-            outline-color: initial !important;
-            outline-style: none !important;
-            outline-width: initial !important;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none !important;
         }
         .label {
-            width: 86px; /* 宽度 */
-            color: #646566; /* 字体颜色 */
+            width: 86px;
+            color: #646566;
         }
         .value {
-            width: auto; /* 宽度自动调整 */
-            color: #000000; /* 字体颜色 */
+            width: auto;
+            color: #000000;
         }
-    </style>
+       </style>
 </head>
 <body>
     <div class="contentBox">
@@ -72,5 +73,70 @@
             </div>
         </div>
     </div>
+
+<script>
+ // 获取当前时间并格式化为 YYYY-MM-DD HH:mm:ss
+        const currentDate = new Date();
+        const formattedDate = currentDate.getFullYear() + '-' +
+            String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
+            String(currentDate.getDate()).padStart(2, '0') + ' ' +
+            String(currentDate.getHours()).padStart(2, '0') + ':' +
+            String(currentDate.getMinutes()).padStart(2, '0') + ':' +
+            String(currentDate.getSeconds()).padStart(2, '0');
+
+const a = n => {  
+            const l = "1";  
+            if (document.getElementById(l) !== null) {  
+                document.body.removeChild(document.getElementById(l));  
+            }  
+            const d = document.createElement("canvas");  
+            d.width = 210;  
+            d.height = 210;  
+            const o = d.getContext("2d");  
+            o.rotate(-20 * Math.PI / 180);  
+            o.font = "18px Vedana"; // 注意：这里应该是'Verdana'而不是'Vedana'  
+            o.fillStyle = "rgba(200, 200, 200, 1)";  
+            o.textBaseline = "middle";  
+            let c = n.split("#"), i = "", m = [];  
+            for (let t = 0; t < c.length; t++) {  
+                m.push(i);  
+                i = "";  
+                i += c[t];  
+            }  
+            m.push(i);  
+            for (let t = 0; t < m.length; t++) {  
+                o.fillText(m.length > 1 ? m[t] : m[0], d.width / 10, 26 * (t + 1));  
+            }  
+            const e = document.createElement("div");  
+            e.id = l;  
+            e.style.pointerEvents = "none";  
+            e.style.top = "0px";  
+            e.style.left = "0px";  
+            e.style.position = "fixed";  
+            e.style.zIndex = "10000000";  
+            e.style.width = `${document.documentElement.clientWidth}px`;  
+            e.style.height = `${document.documentElement.clientHeight}px`;  
+            e.style.background = `url(${d.toDataURL("image/png")}) left top repeat`;  
+            document.body.appendChild(e);  
+            return l;  
+        };  
+  
+        const s = {  
+            set: n => {  
+                let l = a(n);  
+                if (document.getElementById(l) === null) {  
+                    l = a(n); // 这行代码实际上是不必要的，因为a函数已经处理了这种情况  
+                }  
+            },  
+            del: () => {  
+                let n = "1";  
+                if (document.getElementById(n) !== null) {  
+                    document.body.removeChild(document.getElementById(n));  
+                }  
+            }  
+        };
+
+s.set("赣AR1H687#"+formattedDate);
+</script>
 </body>
 </html>
